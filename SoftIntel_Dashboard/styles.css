@@ -123,37 +123,39 @@ body {
 }
 
 .card-kpi {
-    padding: 10px 15px; /* Más compacto */
+    padding: 0.8rem 1rem;
     border-left: 3px solid var(--accent-red);
     height: 100%; 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow:hidden; /* Evita que el contenido se salga */
 }
 
 .card-title {
-    font-size: 0.65rem; 
+    font-size: 0.7rem; 
     text-transform: uppercase;
     color: var(--text-muted);
     margin-bottom: 0px; /* Quitamos margen */
     font-weight: 600;
     white-space: nowrap; /* Obliga al texto a estar en una sola línea */
-    overflow: hidden;    /* Si es muy largo, lo corta limpio */
-    text-overflow: ellipsis;
+    /*overflow: hidden;     Si es muy largo, lo corta limpio 
+    text-overflow: ellipsis;*/
 }
 
 .card-value {
     /* Usamos 'clamp' para que el número se achique si no cabe */
-    font-size: clamp(1.5rem, 2.5vw, 2.2rem); 
+    font-size: clamp(1.2rem, 4vh, 2rem);
     font-weight: bold;
     color: white;
-    line-height: 1;
+    line-height: 1.1; /* Línea más pegadita para ahorrar espacio vertical */
+    margin-top: 2px;  /* Pequeña separación del título */
 }
 
 /* Iconos de las tarjetas */
 .icon-kpi {
     color: #333; /* Gris oscuro sutil */
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: color 0.3s;
 }
 
