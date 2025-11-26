@@ -96,7 +96,7 @@ body {
     grid-template-columns: repeat(4, 1fr); 
     
     /* 3. Espacio entre tarjetas (Gap) */
-    gap: 1rem; 
+    gap: 2rem; 
 
     width: 100% !important;
     
