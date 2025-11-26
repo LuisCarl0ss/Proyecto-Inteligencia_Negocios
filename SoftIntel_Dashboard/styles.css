@@ -93,8 +93,16 @@ body {
 }
 
 .row-charts {
-    flex: 1; /* Crece para llenar el hueco negro */
-    min-height: 0; /* Truco vital para Flexbox */
+    flex: 1; 
+    min-height: 0; /* <--- ESTO ES LA CLAVE. Evita que explote hacia abajo. */
+    overflow: hidden; /* Corta cualquier exceso */
+}
+
+.h-100 { height: 100% !important; }
+
+.col-md-8, .col-md-4 {
+    display: flex;
+    flex-direction: column;
 }
 
 .card-kpi {
@@ -115,7 +123,7 @@ body {
 }
 
 .card-value {
-    font-size: 2rem; /* Número grande pero no gigante */
+    font-size: 1rem; /* Número grande pero no gigante */
     font-weight: bold;
     color: white;
     line-height: 1.2;
@@ -176,23 +184,20 @@ label {
 /* 1. Contenedor relativo para que Chart.js sepa cuánto crecer */
 .chart-container {
     position: relative;
-    flex: 1; /* Ocupa todo el espacio disponible en la tarjeta */
+    flex: 1; /* Crece para llenar la tarjeta */
     width: 100%;
     height: 100%;
-    min-height: 0; /* Evita desbordamientos */
+    min-height: 0; /* <--- ESTO TAMBIÉN ES CLAVE */
+    overflow: hidden;
 }
 
 /* 2. El Canvas llena su contenedor */
 canvas {
-    max-height: none !important; /* Quitamos el límite fijo */
     height: 100% !important;
     width: 100% !important;
 }
 
 /* 3. Ajustes de estructura */
-.h-100 {
-    height: 100% !important;
-}
 
 .card-body {
     flex: 1; 
