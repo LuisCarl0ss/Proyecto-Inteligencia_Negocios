@@ -1,0 +1,142 @@
+:root {
+    --bg-dark: #0f0f0f;       /* Fondo casi negro */
+    --bg-card: #1a1a1a;       /* Tarjetas gris muy oscuro */
+    --text-main: #e0e0e0;     /* Blanco suave */
+    --text-muted: #888888;    /* Gris para etiquetas */
+    --accent-red: #e63946;    /* Rojo vibrante */
+    --sidebar-width: 240px;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.85rem; /* Letra general pequeña */
+    overflow-x: hidden;
+}
+
+/* --- Layout Principal --- */
+#wrapper {
+    display: flex;
+    width: 100%;
+    overflow-x: hidden; /* Evita scroll horizontal al animar */
+}
+
+/* --- Sidebar (Barra Lateral) --- */
+#sidebar-wrapper {
+    width: 240px; /* Ponemos el número fijo por seguridad */
+    min-height: 100vh;
+    background-color: #000;
+    border-right: 1px solid #2a2a2a;
+    transition: margin 0.25s ease-out;
+    flex-shrink: 0; /* ESTO ES VITAL: Evita que la barra se aplaste */
+}
+
+/* Clase Mágica: Cuando el wrapper tiene .toggled, la barra se esconde */
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -240px !important; /* Forzamos el margen negativo */
+}
+
+#page-content-wrapper {
+    flex: 1;
+    width: 100%;
+    padding: 10px 20px; /* Reducido de 15px 25px */
+    background-color: var(--bg-dark);
+    height: 100vh; /* Forzamos altura de pantalla completa */
+    overflow-y: hidden; /* Opcional: Corta el scroll si se pasa por poco */
+}
+
+/* Estilos de la lista del menú */
+.sidebar-heading {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.list-group-item {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: none;
+    font-size: 0.9rem;
+    padding: 12px 20px;
+}
+
+.list-group-item:hover {
+    background-color: #111;
+    color: white;
+}
+
+.list-group-item.active {
+    background-color: var(--accent-red);
+    color: white;
+    font-weight: 600;
+}
+
+/* --- Tarjetas Compactas (El cambio importante) --- */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-kpi {
+    padding: 10px 15px; /* Más compacto */
+    border-left: 3px solid var(--accent-red);
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: 0.65rem; 
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0px; /* Quitamos margen */
+    font-weight: 600;
+}
+
+.card-value {
+    font-size: 0.8rem; /* Número grande pero no gigante */
+    font-weight: bold;
+    color: white;
+    line-height: 1.2;
+}
+
+/* Iconos de las tarjetas */
+.icon-kpi {
+    color: #333; /* Gris oscuro sutil */
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.card-kpi:hover .icon-kpi {
+    color: var(--accent-red); /* Se pone rojo al pasar mouse */
+}
+
+/* --- Botones y Inputs --- */
+.btn-outline-secondary {
+    border-color: #444;
+    color: #ccc;
+}
+.btn-outline-secondary:hover {
+    background-color: #333;
+    color: white;
+}
+
+.form-select-dark {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: #ccc;
+    font-size: 0.85rem;
+}
+
+/* Ajuste de Gráficas */
+canvas {
+    max-height: 220px !important; /* Reducido de 280px a 220px */
+}
