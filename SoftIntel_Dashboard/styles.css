@@ -2,7 +2,7 @@
     --bg-dark: #0f0f0f;       /* Fondo casi negro */
     --bg-card: #1a1a1a;       /* Tarjetas gris muy oscuro */
     --text-main: #e0e0e0;     /* Blanco suave */
-    --text-muted: #888888;    /* Gris para etiquetas */
+    --text-muted: #cccccc;    /* Gris para etiquetas */
     --accent-red: #e63946;    /* Rojo vibrante */
     --sidebar-width: 240px;
 }
@@ -134,6 +134,30 @@ body {
     border: 1px solid #333;
     color: #ccc;
     font-size: 0.85rem;
+}
+
+/* --- CORRECCIÓN DE CONTRASTE --- */
+
+/* 1. Obligar a que los textos secundarios sean legibles */
+.text-muted, .text-white-50 {
+    color: var(--text-muted) !important;
+}
+
+/* 2. Arreglar color de texto dentro de Inputs y Selects */
+.form-control, .form-select, input, select {
+    color: #ffffff !important; /* Texto blanco puro al escribir */
+    background-color: var(--bg-card) !important;
+    border-color: #444 !important;
+}
+
+/* 3. Arreglar el texto de los botones (por si acaso) */
+.btn {
+    color: white !important; /* Asegura que el texto del botón sea blanco */
+}
+
+/* 4. Arreglar etiquetas <label> */
+label {
+    color: #bbbbbb !important; /* Un gris claro para etiquetas */
 }
 
 /* Ajuste de Gráficas */
