@@ -321,7 +321,7 @@ function simularRayleigh() {
 
     const picoMes = Math.floor(sigma);
     document.getElementById('textoConclusion').innerText = 
-        `💡 Análisis IA: Según el modelo, el momento más crítico será el Mes ${picoMes} (Pico de la curva). Se sugiere asignar QAs Senior en esa fecha.`;
+        `💡 Análisis: Según el modelo, el momento más crítico será el Mes ${picoMes} (Pico de la curva). Se sugiere asignar QAs Senior en esa fecha.`;
 }
 
 // ==========================================

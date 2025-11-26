@@ -38,12 +38,11 @@ body {
 }
 
 #page-content-wrapper {
-    flex: 1;
-    width: 100%;
-    padding: 10px 20px; /* Reducido de 15px 25px */
-    background-color: var(--bg-dark);
-    height: 100vh; /* Forzamos altura de pantalla completa */
-    overflow-y: hidden; /* Opcional: Corta el scroll si se pasa por poco */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa el 100% de la ventana */
+    overflow: hidden; /* Sin scroll */
+    padding-bottom: 20px; /* Un poco de aire abajo */
 }
 
 /* Estilos de la lista del menú */
@@ -82,6 +81,20 @@ body {
     border: 1px solid #2a2a2a;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row-kpi {
+    flex: 0 0 20vh; /* Altura fija del 20% de la ventana */
+    margin-bottom: 20px !important; /* Separación */
+}
+
+.row-charts {
+    flex: 1; /* Crece para llenar el hueco negro */
+    min-height: 0; /* Truco vital para Flexbox */
 }
 
 .card-kpi {
@@ -102,7 +115,7 @@ body {
 }
 
 .card-value {
-    font-size: 0.8rem; /* Número grande pero no gigante */
+    font-size: 2rem; /* Número grande pero no gigante */
     font-weight: bold;
     color: white;
     line-height: 1.2;
@@ -160,25 +173,30 @@ label {
     color: #bbbbbb !important; /* Un gris claro para etiquetas */
 }
 
-/* Ajuste de Gráficas */
+/* 1. Contenedor relativo para que Chart.js sepa cuánto crecer */
+.chart-container {
+    position: relative;
+    flex: 1; /* Ocupa todo el espacio disponible en la tarjeta */
+    width: 100%;
+    height: 100%;
+    min-height: 0; /* Evita desbordamientos */
+}
+
+/* 2. El Canvas llena su contenedor */
 canvas {
-    max-height: 35vh !important; 
+    max-height: none !important; /* Quitamos el límite fijo */
+    height: 100% !important;
     width: 100% !important;
 }
 
+/* 3. Ajustes de estructura */
 .h-100 {
     height: 100% !important;
 }
 
-/* Ajuste específico para que las tarjetas se estiren */
-.card {
-    display: flex;
-    flex-direction: column;
-}
-
 .card-body {
-    flex: 1; /* Ocupa todo el espacio sobrante */
+    flex: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    overflow: hidden; /* Evita que la gráfica se salga */
 }
