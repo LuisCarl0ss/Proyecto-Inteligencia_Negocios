@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoftIntel BI | Dark Mode</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    
+    <div id="sidebar-wrapper">
+        <div class="sidebar-heading"><i class="fa-solid fa-code-branch"></i> SOFTINTEL</div>
+        <div class="list-group list-group-flush mt-3">
+            <a href="index.html" class="list-group-item list-group-item-action">
+                <i class="fa-solid fa-gauge me-2"></i> Dashboard
+            </a>
+            <a href="cubo.html" class="list-group-item list-group-item-action active">
+                <i class="fa-solid fa-cube me-2"></i> Cubo OLAP
+            </a>
+            <a href="estrategia.html" class="list-group-item list-group-item-action">
+                <i class="fa-solid fa-bullseye me-2"></i> Estrategia
+            </a>
+        </div>
+    </div>
+
+    <div id="page-content-wrapper">
+        
+        <nav class="navbar navbar-dark bg-transparent border-bottom border-secondary mb-3 p-0 pb-2">
+            <div class="container-fluid px-0">
+                <button class="btn btn-outline-secondary" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <span class="navbar-text text-white ms-3 fw-bold">EXPLORADOR OLAP MULTIDIMENSIONAL</span>
+            </div>
+        </nav>
+
+        <div class="card p-3 mb-3 border-secondary">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label class="text-muted small mb-1">DIMENSIÓN (Eje X)</label>
+                    <select id="selDimension" class="form-select form-select-dark">
+                        <option value="Cliente">Por Cliente</option>
+                        <option value="Industria">Por Industria</option>
+                        <option value="Stack">Por Tecnología</option>
+                        <option value="PM">Por Project Manager</option>
+                        <option value="Estado">Por Estado</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="text-muted small mb-1">MÉTRICA (Eje Y)</label>
+                    <select id="selMetrica" class="form-select form-select-dark">
+                        <option value="Ingresos">Ingresos Facturados ($)</option>
+                        <option value="Costo">Costo Real ($)</option>
+                        <option value="Presupuesto">Presupuesto ($)</option>
+                        <option value="Defectos">Cantidad de Defectos</option>
+                        <option value="ROI">ROI Promedio (%)</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-red w-100" onclick="actualizarCubo()">
+                        <i class="fa-solid fa-filter me-2"></i> Generar Análisis
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3" style="height: calc(100vh - 180px);"> <div class="col-md-8 h-100">
+                <div class="card p-3 h-100">
+                    <h6 class="text-muted mb-2 ps-2" id="tituloGrafica">Análisis...</h6>
+                    <div style="flex: 1; position: relative; min-height: 0;">
+                        <canvas id="graficaOlap"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 h-100">
+                <div class="card p-3 h-100 table-responsive">
+                    <h6 class="text-muted mb-3">Detalle (Top 10)</h6>
+                    <table class="table table-dark table-sm table-hover" style="font-size: 0.8rem;">
+                        <thead>
+                            <tr>
+                                <th id="thDimension">Dimensión</th>
+                                <th id="thValor" class="text-end">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
