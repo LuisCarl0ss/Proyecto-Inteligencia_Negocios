@@ -82,6 +82,7 @@ body {
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     height: 100%;
+    width: 100% !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,6 +97,8 @@ body {
     
     /* 3. Espacio entre tarjetas (Gap) */
     gap: 1rem; 
+
+    width: 100% !important;
     
     /* 4. Mantener la altura fija del 20% */
     height: 20vh; 
@@ -134,13 +137,17 @@ body {
     color: var(--text-muted);
     margin-bottom: 0px; /* Quitamos margen */
     font-weight: 600;
+    white-space: nowrap; /* Obliga al texto a estar en una sola línea */
+    overflow: hidden;    /* Si es muy largo, lo corta limpio */
+    text-overflow: ellipsis;
 }
 
 .card-value {
-    font-size: 1rem; /* Número grande pero no gigante */
+    /* Usamos 'clamp' para que el número se achique si no cabe */
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem); 
     font-weight: bold;
     color: white;
-    line-height: 1.2;
+    line-height: 1;
 }
 
 /* Iconos de las tarjetas */
