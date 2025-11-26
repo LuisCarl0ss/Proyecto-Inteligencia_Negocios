@@ -137,7 +137,7 @@ body {
 }
 
 .card-value {
-    font-size: 2rem; /* Número grande pero no gigante */
+    font-size: 1rem; /* Número grande pero no gigante */
     font-weight: bold;
     color: white;
     line-height: 1.2;
