@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Final IN</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="d-flex" id="wrapper">
+    <!-- SIDEBAR -->
     <div id="sidebar-wrapper">
         <div class="sidebar-heading"><i class="fa-solid fa-code-branch"></i></div>
         <div class="list-group list-group-flush mt-3">
@@ -26,8 +30,11 @@
         </div>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div id="page-content-wrapper">
-        <nav class="navbar navbar-dark bg-transparent border-bottom border-secondary mb-3 p-0 pb-2">
+        
+        <!-- Barra Superior -->
+        <nav class="navbar navbar-dark bg-transparent border-bottom border-secondary mb-2 p-0 pb-2">
             <div class="container-fluid px-0">
                 <button class="btn btn-outline-secondary" onclick="toggleMenu()">
                     <i class="fa-solid fa-bars"></i>
@@ -36,11 +43,15 @@
             </div>
         </nav>
 
+        <!-- FILA PRINCIPAL (Ocupa todo el espacio restante) -->
         <div class="row g-3" style="flex: 1; min-height: 0;">
+            
+            <!-- COLUMNA IZQUIERDA: BSC + Riesgos -->
             <div class="col-md-5 d-flex flex-column gap-3 h-100">
-    
+                
+                <!-- 1. TARJETAS BSC (No se encoge) -->
                 <div class="card p-3 border-secondary" style="flex: 0 0 auto;">
-                    <h6 class="text-muted mb-3"><i class="fa-solid fa-chess-board me-2"></i>Balanced Scorecard (OKRs)</h6>
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-chess-board me-2"></i>Balanced Scorecard (OKRs)</h6>
                     <div class="row g-2">
                         <div class="col-6">
                             <div class="card p-2 border-start border-success border-3 h-100 bg-dark">
@@ -75,37 +86,40 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- 2. TABLA DE RIESGOS (Ocupa el resto) -->
+                <div class="card p-3 border-secondary" style="flex: 1; min-height: 0; overflow: hidden;">
+                    <h6 class="text-muted mb-2">
+                        <i class="fa-solid fa-triangle-exclamation me-2 text-danger"></i>Proyectos en Riesgo (ROI Negativo)
+                    </h6>
+                    <div class="table-responsive h-100" style="overflow-y: auto;">
+                        <table class="table table-dark table-sm table-hover" style="font-size: 0.75rem;">
+                            <thead style="position: sticky; top: 0; background-color: #1a1a1a; z-index: 1;">
+                                <tr class="text-muted">
+                                    <th>Cliente / Proyecto</th>
+                                    <th class="text-center">ROI</th>
+                                    <th class="text-center">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaRiesgos">
+                                <!-- Se llena con JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
-        </div>
 
-    <div class="card p-3 border-secondary flex-grow-1" style="min-height: 0; overflow: hidden;">
-        <h6 class="text-muted mb-2">
-            <i class="fa-solid fa-triangle-exclamation me-2 text-danger"></i>Proyectos en Riesgo (ROI Negativo)
-        </h6>
-        <div class="table-responsive h-100">
-            <table class="table table-dark table-sm table-hover" style="font-size: 0.75rem;">
-                <thead>
-                    <tr class="text-muted">
-                        <th>Cliente / Proyecto</th>
-                        <th class="text-center">ROI</th>
-                        <th class="text-center">Estado</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaRiesgos">
-                    </tbody>
-            </table>
-        </div>
-    </div>
-
-    </div>
-
-            <div class="col-md-7">
-                <div class="card p-3 h-100">
+            <!-- COLUMNA DERECHA: SIMULADOR IA -->
+            <div class="col-md-7 h-100">
+                <div class="card p-3 h-100 border-secondary">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h6 class="text-muted mb-0"><i class="fa-solid fa-robot me-2"></i>Simulador de Defectos (Modelo Rayleigh)</h6>
                         <span class="badge bg-danger">Predictivo</span>
                     </div>
 
+                    <!-- Controles -->
                     <div class="row g-2 align-items-end mb-3">
                         <div class="col-md-4">
                             <label class="text-white-50 small">Duración Proyecto (Meses)</label>
@@ -122,12 +136,14 @@
                         </div>
                     </div>
 
-                    <div style="flex: 1; position: relative; min-height: 250px;">
+                    <!-- Gráfica (Flexible) -->
+                    <!-- AQUÍ ESTABA EL ERROR: Cambié min-height: 250px por min-height: 0 -->
+                    <div style="flex: 1; position: relative; min-height: 0; width: 100%;">
                         <canvas id="graficaRayleigh"></canvas>
                     </div>
                     
                     <div class="mt-2 text-center">
-                        <small class="text-muted fst-italic" id="textoConclusion">
+                        <small class="text-muted fst-italic" id="textoConclusion" style="font-size: 0.8rem;">
                             El pico de defectos ocurrirá en el mes X. Se recomienda reforzar QA.
                         </small>
                     </div>
@@ -138,6 +154,7 @@
     </div>
 </div>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="app.js"></script>
