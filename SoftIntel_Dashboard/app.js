@@ -272,6 +272,35 @@ function actualizarEstrategia() {
     else if(avgROI > 0) cardFin.className = "fw-bold text-warning"; // Amarillo
     else cardFin.className = "fw-bold text-danger"; // Rojo
 
+    const tbody = document.getElementById('tablaRiesgos');
+    if (tbody) {
+        tbody.innerHTML = '';
+        
+        // Filtramos proyectos con ROI negativo y los ordenamos del peor al "menos peor"
+        const proyectosCriticos = datosGlobales
+            .filter(d => d.ROI < 0)
+            .sort((a, b) => a.ROI - b.ROI) // Orden ascendente (los más negativos primero)
+            .slice(0, 5); // Top 5
+
+        proyectosCriticos.forEach(p => {
+            const row = `
+                <tr>
+                    <td>
+                        <div class="fw-bold text-white">${p.Cliente}</div>
+                        <small class="text-muted">${p.Stack}</small>
+                    </td>
+                    <td class="text-center text-danger fw-bold">${p.ROI}%</td>
+                    <td class="text-center">
+                        <span class="badge bg-danger bg-opacity-25 text-danger border border-danger p-1">
+                            ${p.Estado}
+                        </span>
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    }
+
     // 4. Iniciar Simulación por defecto
     simularRayleigh();
 }

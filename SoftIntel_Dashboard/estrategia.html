@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoftIntel BI | Estrategia</title>
+    <title>Proyecto Final IN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -12,7 +12,7 @@
 
 <div class="d-flex" id="wrapper">
     <div id="sidebar-wrapper">
-        <div class="sidebar-heading"><i class="fa-solid fa-code-branch"></i> SOFTINTEL</div>
+        <div class="sidebar-heading"><i class="fa-solid fa-code-branch"></i></div>
         <div class="list-group list-group-flush mt-3">
             <a href="index.html" class="list-group-item list-group-item-action">
                 <i class="fa-solid fa-gauge me-2"></i> Dashboard
@@ -38,44 +38,66 @@
 
         <div class="row h-100 g-3">
             
-            <div class="col-md-5">
+            <div class="col-md-5 d-flex flex-column gap-3">
+    
+            <div class="card p-3 border-secondary flex-grow-0">
                 <h6 class="text-muted mb-3"><i class="fa-solid fa-chess-board me-2"></i>Balanced Scorecard (OKRs)</h6>
-                
-                <div class="row g-3">
+                <div class="row g-2">
                     <div class="col-6">
-                        <div class="card p-3 border-start border-success border-4 h-100">
-                            <small class="text-muted text-uppercase">Financiero</small>
-                            <h6 class="text-white mt-1">Rentabilidad</h6>
-                            <h2 class="fw-bold text-success" id="bscFinanciero">0%</h2>
-                            <small class="text-white-50">Meta: >15% ROI</small>
+                        <div class="card p-2 border-start border-success border-3 h-100 bg-dark">
+                            <small class="text-muted text-uppercase" style="font-size: 0.65rem;">Financiero</small>
+                            <h5 class="text-white mt-1 mb-0" style="font-size: 0.9rem;">Rentabilidad</h5>
+                            <h2 class="fw-bold text-success mb-0" id="bscFinanciero" style="font-size: 1.5rem;">0%</h2>
+                            <small class="text-white-50" style="font-size: 0.7rem;">Meta: >15% ROI</small>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="card p-3 border-start border-primary border-4 h-100">
-                            <small class="text-muted text-uppercase">Clientes</small>
-                            <h6 class="text-white mt-1">Satisfacción (NPS)</h6>
-                            <h2 class="fw-bold text-primary" id="bscCliente">0</h2>
-                            <small class="text-white-50">Meta: >8.5 Puntos</small>
+                        <div class="card p-2 border-start border-primary border-3 h-100 bg-dark">
+                            <small class="text-muted text-uppercase" style="font-size: 0.65rem;">Clientes</small>
+                            <h5 class="text-white mt-1 mb-0" style="font-size: 0.9rem;">Satisfacción</h5>
+                            <h2 class="fw-bold text-primary mb-0" id="bscCliente">0</h2>
+                            <small class="text-white-50" style="font-size: 0.7rem;">Meta: >8.5 NPS</small>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="card p-3 border-start border-warning border-4 h-100">
-                            <small class="text-muted text-uppercase">Procesos</small>
-                            <h6 class="text-white mt-1">Eficiencia (Bugs)</h6>
-                            <h2 class="fw-bold text-warning" id="bscProcesos">0</h2>
-                            <small class="text-white-50">Meta: &lt;30 Promedio</small>
+                        <div class="card p-2 border-start border-warning border-3 h-100 bg-dark">
+                            <small class="text-muted text-uppercase" style="font-size: 0.65rem;">Procesos</small>
+                            <h5 class="text-white mt-1 mb-0" style="font-size: 0.9rem;">Eficiencia</h5>
+                            <h2 class="fw-bold text-warning mb-0" id="bscProcesos">0</h2>
+                            <small class="text-white-50" style="font-size: 0.7rem;">Meta: &lt;30 Bugs</small>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="card p-3 border-start border-info border-4 h-100">
-                            <small class="text-muted text-uppercase">Aprendizaje</small>
-                            <h6 class="text-white mt-1">Capacitación</h6>
-                            <h2 class="fw-bold text-info" id="bscAprendizaje">100%</h2>
-                            <small class="text-white-50">Meta: Certificación</small>
+                        <div class="card p-2 border-start border-info border-3 h-100 bg-dark">
+                            <small class="text-muted text-uppercase" style="font-size: 0.65rem;">Aprendizaje</small>
+                            <h5 class="text-white mt-1 mb-0" style="font-size: 0.9rem;">Capacitación</h5>
+                            <h2 class="fw-bold text-info mb-0" id="bscAprendizaje">100%</h2>
+                            <small class="text-white-50" style="font-size: 0.7rem;">Meta: Certificación</small>
                         </div>
                     </div>
                 </div>
             </div>
+
+    <div class="card p-3 border-secondary flex-grow-1" style="min-height: 0; overflow: hidden;">
+        <h6 class="text-muted mb-2">
+            <i class="fa-solid fa-triangle-exclamation me-2 text-danger"></i>Proyectos en Riesgo (ROI Negativo)
+        </h6>
+        <div class="table-responsive h-100">
+            <table class="table table-dark table-sm table-hover" style="font-size: 0.75rem;">
+                <thead>
+                    <tr class="text-muted">
+                        <th>Cliente / Proyecto</th>
+                        <th class="text-center">ROI</th>
+                        <th class="text-center">Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaRiesgos">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
 
             <div class="col-md-7">
                 <div class="card p-3 h-100">
